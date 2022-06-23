@@ -1,6 +1,5 @@
 package com.sty.sf.beans;
 
-import com.sty.sf.beans.bean.UserService;
 import com.sty.sf.beans.factory.config.BeanDefinition;
 import com.sty.sf.beans.factory.support.DefaultListableBeanFactory;
 import org.junit.Test;
@@ -26,13 +25,9 @@ public class ApiTest {
         beanFactory.registryBeanDefinition("userService",beanDefinition);
 
         // 3. 获取bean
-        UserService userService = (UserService) beanFactory.getBean("userService");
+        UserService userService = (UserService) beanFactory.getBean("userService","邱少");
         userService.queryUserInfo();
         System.out.println(userService);
 
-        // 4. 第二次获取bean
-        UserService userService2 = (UserService) beanFactory.getBean("userService");
-        userService2.queryUserInfo();
-        System.out.println(userService2);
     }
 }

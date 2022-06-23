@@ -16,6 +16,7 @@
     <modules>
         <module>spring-step-01</module>
         <module>spring-step-02</module>
+        <module>spring-step-03</module>
     </modules>
 
     <dependencies>
@@ -25,6 +26,13 @@
             <version>4.7</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
