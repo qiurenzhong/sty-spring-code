@@ -4,12 +4,12 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.XmlUtil;
 import com.sty.spring.beans.BeansException;
 import com.sty.spring.beans.PropertyValue;
-import com.sty.spring.core.io.Resource;
-import com.sty.spring.core.io.ResourceLoader;
 import com.sty.spring.beans.factory.config.BeanDefinition;
 import com.sty.spring.beans.factory.config.BeanReference;
 import com.sty.spring.beans.factory.support.AbstractBeanDefinitionReader;
 import com.sty.spring.beans.factory.support.BeanDefinitionRegistry;
+import com.sty.spring.core.io.Resource;
+import com.sty.spring.core.io.ResourceLoader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -83,6 +83,11 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             String id = bean.getAttribute("id");
             String name = bean.getAttribute("name");
             String className = bean.getAttribute("class");
+
+            //增加对init-method、destroy-method的读取
+            String initMethod = bean.getAttribute("init-method");
+            String destroyMethodName = bean.getAttribute("destroy-method");
+
             // 获取 Class，方便获取类中的名称
             Class<?> zlass = Class.forName(className);
             String beanName = StrUtil.isBlank(id)?name:id;
@@ -91,6 +96,10 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             }
 
             BeanDefinition beanDefinition = new BeanDefinition(zlass);
+            //额外设置到beanDefinition中
+            beanDefinition.setInitMethodName(initMethod);
+            beanDefinition.setDestroyMethodName(destroyMethodName);
+
             // 属性注入
             for (int j = 0; j < bean.getChildNodes().getLength(); j++) {
                 if (!(bean.getChildNodes().item(j) instanceof Element)) {
@@ -113,7 +122,9 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
             }
 
-
+            if (getRegistry().containsBeanDefinition(beanName)) {
+                throw new BeansException("Duplicate beanName["+beanName+"] is not allowed");
+            }
             // 注册bean
             getRegistry().registryBeanDefinition(beanName,beanDefinition);
 
