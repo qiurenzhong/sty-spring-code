@@ -1,4 +1,4 @@
-package com.sty.spring.test.dao;
+package com.sty.spring.test.bean;
 
 import com.sty.spring.beans.BeansException;
 import com.sty.spring.beans.factory.BeanClassLoaderAware;
@@ -15,7 +15,7 @@ public class UserService implements InitializingBean, DisposableBean , BeanNameA
     private String uId;
     private String company;
     private String location;
-    private UserDao userDao;
+    private IUserDao userDao;
 
     private ApplicationContext applicationContext;
     private BeanFactory beanFactory;
@@ -78,11 +78,11 @@ public class UserService implements InitializingBean, DisposableBean , BeanNameA
         this.location = location;
     }
 
-    public UserDao getUserDao() {
+    public IUserDao getUserDao() {
         return userDao;
     }
 
-    public void setUserDao(UserDao userDao) {
+    public void setUserDao(IUserDao userDao) {
         this.userDao = userDao;
     }
 

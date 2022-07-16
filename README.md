@@ -57,6 +57,13 @@ java.lang.InstantiationException: cn.bugstack.springframework.test.bean.UserServ
 4.注册BeanPostProcessor
 5.感知调用操作
 
+第八节-对象的作用域和FactoryBean
+1. Bean的作用范围定义和xml解析
+2. 创建和修改对象时候判断单例和原型模式
+3. 定义FactoryBean接口
+4. 实现一个 FactoryBean 注册服务
+5. 扩展 AbstractBeanFactory 创建对象逻辑
+6. 
 
 
 

@@ -2,7 +2,7 @@ package com.sty.spring.test.common;
 
 import com.sty.spring.beans.BeansException;
 import com.sty.spring.beans.factory.config.BeanPostProcessor;
-import com.sty.spring.test.dao.UserService;
+import com.sty.spring.test.bean.UserService;
 
 public class MyBeanPostProcessor implements BeanPostProcessor {
 

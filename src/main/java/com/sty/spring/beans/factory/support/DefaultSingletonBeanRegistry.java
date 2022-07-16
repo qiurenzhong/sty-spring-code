@@ -20,6 +20,9 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
     private final Map<String,Object> singletonObjects = new HashMap<>();
     private final Map<String, DisposableBean> disposableBeans = new HashMap<>();
 
+    /**空单例对象的内部标记:用作并发映射(不支持空值)的标记值 */
+    protected final static Object NULL_OBJECT = new Object();
+
     @Override
     public Object getSingleton(String beanName) {
         return singletonObjects.get(beanName);
