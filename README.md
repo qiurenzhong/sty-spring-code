@@ -42,14 +42,20 @@ java.lang.InstantiationException: cn.bugstack.springframework.test.bean.UserServ
 第五节
 实现应用上下文
 
-第六节
-初始化和销毁方法
+第六节 -初始化和销毁方法
 1. 定义初始化方法接口 com.sty.spring.beans.factory.InitializingBean 和销毁方法接口 com.sty.spring.beans.factory.DisposableBean
 2. 在BeanDefinition类中的属性定义新增初始化和销毁，在XmlBeanDefinitionReader 类中增加对属性的读取并添加到BeanDefinition
 3. 执行Bean对象的初始化方法 com.sty.spring.beans.factory.support.AbstractAutowireCapableBeanFactory
 4. 定义销毁方法适配器(接口和配置)
 5. 创建Bean时注册销毁方法对象
 6. 虚拟机关闭钩子注册调用销毁方法
+
+第七节-Aware的感知容器对象
+1.定义标记接口
+2.容器感知类
+3.包装处理器
+4.注册BeanPostProcessor
+5.感知调用操作
 
 
 

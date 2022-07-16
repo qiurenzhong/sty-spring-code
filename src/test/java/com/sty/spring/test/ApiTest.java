@@ -39,4 +39,21 @@ public class ApiTest {
         System.out.println(userInfo);
 
     }
+
+    @Test
+    public void test_aware(){
+        // 1.初始化BeanFactory
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-bean.xml");
+
+        // 注册钩子
+        applicationContext.registerShutdownHook();
+
+        // 2.获取bean
+        UserService userService = applicationContext.getBean("userService", UserService.class);
+        String userInfo = userService.queryUserInfo();
+        System.out.println(userInfo);
+        System.out.println("ApplicationContextAware："+ userService.getApplicationContext());
+        System.out.println("BeanFactoryAware："+userService.getBeanFactory());
+
+    }
 }
