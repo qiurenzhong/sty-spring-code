@@ -33,7 +33,8 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
      * @param beanName  bean名称
      * @param singletonBean  单例bean
      */
-    protected void addSingleton(String beanName,Object singletonBean) {
+    @Override
+    public void registerSingleton(String beanName, Object singletonBean) {
         singletonObjects.put(beanName,singletonBean);
     }
 

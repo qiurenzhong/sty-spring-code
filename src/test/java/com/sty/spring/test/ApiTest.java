@@ -2,6 +2,7 @@ package com.sty.spring.test;
 
 import com.sty.spring.context.support.ClassPathXmlApplicationContext;
 import com.sty.spring.test.bean.UserService;
+import com.sty.spring.test.event.CustomEvent;
 import org.junit.Test;
 import org.openjdk.jol.info.ClassLayout;
 
@@ -88,5 +89,13 @@ public class ApiTest {
         UserService userService = applicationContext.getBean("userService", UserService.class);
         System.out.println("测试结果：" + userService.queryUserInfo());
     }
+	
+	@Test
+	public void test_event() {
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring-bean.xml");
+		applicationContext.publishEvent(new CustomEvent(applicationContext, 1019129009086763L, "成功了！"));
+		
+		applicationContext.registerShutdownHook();
+	}
 
 }

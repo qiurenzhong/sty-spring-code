@@ -1,5 +1,7 @@
 package com.sty.spring.utils;
 
+import com.sty.spring.context.ApplicationListener;
+
 /**
  *  Class工具
  *
@@ -24,4 +26,12 @@ public class ClassUtils {
 
         return cl;
     }
+	
+	public static boolean isCglibProxyClass(Class<?> clazz) {
+		return (clazz != null && isCglibProxyClassName(clazz.getName()));
+	}
+	
+	public static boolean isCglibProxyClassName(String clazzName) {
+		return (clazzName != null && clazzName.contains("$$"));
+	}
 }

@@ -15,4 +15,10 @@
     <bean class="com.sty.spring.test.common.MyBeanPostProcessor"/>
     <bean class="com.sty.spring.test.common.MyBeanFactoryPostProcessor"/>
 
+    <bean class="com.sty.spring.test.event.ContextRefreshedEventListener"/>
+
+    <bean class="com.sty.spring.test.event.CustomEventListener"/>
+
+    <bean class="com.sty.spring.test.event.ContextClosedEventListener"/>
+
 </beans>

@@ -8,12 +8,19 @@ package com.sty.spring.beans.factory.config;
  * @version 1.0.0
  */
 public interface SingletonBeanRegistry {
-
-    /**
-     *  获取单例
-     * @param beanName bean名称
-     * @return 返回对象
-     */
-    Object getSingleton(String beanName);
-    
+	
+	/**
+	 *  获取单例
+	 * @param beanName bean名称
+	 * @return 返回对象
+	 */
+	Object getSingleton(String beanName);
+	
+	/**
+	 *注册单例
+	 * @param beanName bean名称
+	 * @param singletonObject 单例对象
+	 */
+	void registerSingleton(String beanName, Object singletonObject);
+	
 }

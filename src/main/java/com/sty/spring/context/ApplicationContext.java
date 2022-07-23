@@ -10,5 +10,5 @@ import com.sty.spring.beans.factory.ListableBeanFactory;
  * @date 2022/6/30
  * @version 1.0.0
  */
-public interface ApplicationContext extends ListableBeanFactory {
+public interface ApplicationContext extends ListableBeanFactory ,ApplicationEventPublisher{
 }
