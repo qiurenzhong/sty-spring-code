@@ -9,8 +9,11 @@ import com.sty.spring.beans.factory.DisposableBean;
 import com.sty.spring.beans.factory.InitializingBean;
 import com.sty.spring.context.ApplicationContext;
 import com.sty.spring.context.ApplicationContextAware;
+import com.sty.spring.test.bean.api.IUserService;
 
-public class UserService implements InitializingBean, DisposableBean , BeanNameAware, BeanClassLoaderAware,BeanFactoryAware, ApplicationContextAware {
+import java.util.Random;
+
+public class UserService implements IUserService, InitializingBean, DisposableBean , BeanNameAware, BeanClassLoaderAware,BeanFactoryAware, ApplicationContextAware {
 
     private String uId;
     private String company;
@@ -53,8 +56,18 @@ public class UserService implements InitializingBean, DisposableBean , BeanNameA
     public String queryUserInfo() {
         return userDao.queryUserName(uId) + "," + company + "," + location;
     }
-
-    public String getuId() {
+	
+	@Override
+	public String register(String userName) {
+		try {
+			Thread.sleep(new Random(1).nextInt(100));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return "注册用户：" + userName + " success！";
+	}
+	
+	public String getuId() {
         return uId;
     }
 
